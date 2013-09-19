@@ -25,12 +25,16 @@ do ($ = window.jQuery, window) ->
         return this
 
     stop: () ->
-      @$el.find(".chardinjs-overlay").fadeOut -> $(this).remove()
+      @$el.find(".chardinjs-overlay").fadeOut =>
 
-      @$el.find('.chardinjs-helper-layer').remove()
+        @$el.find('.chardinjs-helper-layer').remove()
 
-      @$el.find('.chardinjs-show-element').removeClass('chardinjs-show-element')
-      @$el.find('.chardinjs-relative-position').removeClass('chardinjs-relative-position')
+        @$el.find('.chardinjs-show-element').removeClass('chardinjs-show-element')
+        @$el.find('.chardinjs-relative-position').removeClass('chardinjs-relative-position')
+
+        @$el.find(".chardinjs-overlay").remove()
+        true
+
 
       if window.removeEventListener
         window.removeEventListener "keydown", @_onKeyDown, true
@@ -62,10 +66,8 @@ do ($ = window.jQuery, window) ->
 
       overlay_layer.onclick = => @.stop()
 
-      setTimeout ->
-        styleText += "opacity: .8;opacity: .8;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)';filter: alpha(opacity=80);"
-        overlay_layer.setAttribute "style", styleText
-      , 10
+      @$el.find(".chardinjs-overlay").fadeIn()
+
 
     _get_position: (element) -> element.getAttribute('data-position') or 'bottom'
 

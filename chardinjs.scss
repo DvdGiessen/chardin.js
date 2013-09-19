@@ -7,18 +7,18 @@
 }
 
 .chardinjs-overlay {
+  display: none;
   position: absolute;
   z-index: 999999;
-  background-color: #000;
-  opacity: 0;
-  @include transition(all 0.3s ease-out);
+  background-color: black;
+  opacity: 0.8;
+  filter: alpha(opacity=70);
 }
 
 .chardinjs-helper-layer {
   position: absolute;
   z-index: 9999998;
   color: white;
-  @include transition(all 0.3s ease-out);
 
   &.chardinjs-left { border-left: solid white 1px; margin-left: -10px; }
   &.chardinjs-right { border-right: solid white 1px; padding-right: 10px; }
