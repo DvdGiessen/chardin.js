@@ -5,7 +5,7 @@
   position: absolute;
   z-index: 999999;
   background-color: black;
-  opacity: 0.8;
+  @include opacity(0.8);
   filter: alpha(opacity=70);
 }
 
@@ -58,7 +58,7 @@
 
 .chardinjs-show-element {
   z-index: 9999999;
-  opacity: 0.8;
+  @include opacity(0.8);
 }
 
 .chardinjs-relative-position {
