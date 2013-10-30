@@ -96,9 +96,12 @@
           }
         }
         this.$el.get()[0].appendChild(overlay_layer);
-        overlay_layer.onclick = function() {
+        overlay_layer.addEventListener('touchstart', function(e) {
           return _this.stop();
-        };
+        })
+        overlay_layer.addEventListener('click', function() {
+          return _this.stop();
+        });
         return setTimeout(function() {
           styleText += "opacity: .8;";
           return overlay_layer.setAttribute("style", styleText);
