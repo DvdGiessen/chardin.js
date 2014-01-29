@@ -1,12 +1,10 @@
-@import "compass/css3";
 
 .chardinjs-overlay {
   display: none;
   position: absolute;
   z-index: 999999;
   background-color: black;
-  @include opacity(0.8);
-  filter: alpha(opacity=70);
+  .opacity(80);
 }
 
 .chardinjs-helper-layer {
@@ -22,7 +20,7 @@
 
 .chardinjs-tooltip {
   position: absolute;
-  @include transition(opacity 0.1s ease-out);
+  .transition(opacity 0.1s ease-out);
   max-width: 200px;
 
   &.chardinjs-left { margin-left: -135px; padding-right: 10px; }
@@ -58,7 +56,7 @@
 
 .chardinjs-show-element {
   z-index: 9999999;
-  @include opacity(0.8);
+  .opacity(80);
 }
 
 .chardinjs-relative-position {

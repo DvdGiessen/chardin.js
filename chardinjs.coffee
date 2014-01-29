@@ -8,7 +8,7 @@ do ($ = window.jQuery, window) ->
     start: ->
       return false if @._overlay_visible()
       @._add_overlay_layer()
-      @._show_element(el) for el in @$el.find('*[data-intro]')
+      @._show_element(el) for el in @$el.find('*[data-intro]:not(:hidden)')
 
       @$el.trigger 'chardinJs:start'
 
@@ -35,11 +35,11 @@ do ($ = window.jQuery, window) ->
         @$el.find(".chardinjs-overlay").remove()
         true
 
-
-      if window.removeEventListener
-        window.removeEventListener "keydown", @_onKeyDown, true
-      #IE
-      else document.detachEvent "onkeydown", @_onKeyDown  if document.detachEvent
+	  if @_onKeyDown
+        if window.removeEventListener
+           window.removeEventListener "keydown", @_onKeyDown, true
+        #IE
+        else document.detachEvent "onkeydown", @_onKeyDown  if document.detachEvent
 
       @$el.trigger 'chardinJs:stop'
 
@@ -64,7 +64,8 @@ do ($ = window.jQuery, window) ->
           overlay_layer.setAttribute "style", styleText
       @$el.get()[0].appendChild overlay_layer
 
-      overlay_layer.onclick = => @.stop()
+      $(overlay_layer).bind 'click touchstart', (event) =>
+        @.stop()
 
       @$el.find(".chardinjs-overlay").fadeIn()
 

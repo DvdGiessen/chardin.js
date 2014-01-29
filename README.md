@@ -2,9 +2,59 @@
 
 **Simple overlay instructions for your apps.**
 
-[Check out a original at](http://heelhook.github.com/chardin.js/).
+Chardin.js is a jQuery plugin that creates a simple overlay to display instructions on existent elements.
 
-My fixed fork of chardin.js.
+Based on [the original](http://heelhook.github.com/chardin.js/) by heelhook, this version was modified to use LESS and includes various fixes and improvements (i.e. performance, touch-support, old IE versions).
+
+## Adding data for the instructions
+
+Add the instructions to your elements:
+
+`data-intro`: Text to show with the instructions  
+`data-position`: (`left`, `top`, `right`, `bottom`), where to place the text with respect to the element
+
+```HTML
+<img src="img/chardin.png" data-intro="An awesome 18th-century painter, who found beauty in everyday, common things." data-position="right" />
+```
+
+## Running
+
+Once you have your elements ready you can show instructions running
+
+```Javascript
+$('body').chardinJs('start')
+```
+
+If you would rather run ChardinJs confined to a particular container (instead of using the whole document) you can
+change `body` to some other selector.
+
+```Javascript
+$('.container').chardinJs('start')
+```
+
+## Methods
+
+### .chardinJs('start')
+
+Start ChardinJs in the selector.
+
+### .chardinJs('toggle')
+
+Toggle ChardinJs.
+
+### .chardinJs('stop')
+
+Make your best guess. That's right! Stops ChardinJs in the selector.
+
+## Events
+
+### 'chardinJs:start'
+
+Triggered when chardinJs is correctly started.
+
+### 'chardinJs:stop'
+
+Triggered when chardinJs is stopped.
 
 ## Original License
 
