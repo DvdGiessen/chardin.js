@@ -8,8 +8,7 @@ do ($ = window.jQuery, window) ->
     start: ->
       return false if @._overlay_visible()
       @._add_overlay_layer()
-      @._show_element(el) for el in @$el.find('*[data-intro]:not(:hidden)')
-
+      @._show_element(el) for el in @$el.find('*[data-intro]:visible')
       @$el.trigger 'chardinJs:start'
 
     toggle: () ->
@@ -20,7 +19,7 @@ do ($ = window.jQuery, window) ->
 
     refresh: ()->
       if @._overlay_visible()
-        @._position_helper_layer(el) for el in @$el.find('*[data-intro]')
+        @._position_helper_layer(el) for el in @$el.find('*[data-intro]:visible')
       else
         return this
 
@@ -35,7 +34,7 @@ do ($ = window.jQuery, window) ->
         @$el.find(".chardinjs-overlay").remove()
         true
 
-	  if @_onKeyDown
+      if @_onKeyDown
         if window.removeEventListener
            window.removeEventListener "keydown", @_onKeyDown, true
         #IE
